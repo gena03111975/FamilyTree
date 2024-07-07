@@ -1,5 +1,6 @@
+import Dogs.Dog;
 import FamilyTree.FamilyTree;
-import FamilyTreeService.FamilyTreeService;
+import FamilyTree.FamilyTreeService.FamilyTreeService;
 import Human.Human;
 import Human.Gender;
 import Writer.FileHandler;
@@ -25,8 +26,7 @@ public class Main {
 
         human1.setDod(LocalDate.of(2013, 10, 19));
         human6.addSpouse(human8);
-        human6.addChildrentoHuman(human9);
-
+        human6.addChildrentoFamilyMember(human9);
 
 //        service.sortByName();
 //        System.out.println(service.getFamilyTreeInfo());

@@ -1,4 +1,4 @@
-package HumanBuilder;
+package Human.HumanBuilder;
 import Human.Gender;
 import Human.Human;
 

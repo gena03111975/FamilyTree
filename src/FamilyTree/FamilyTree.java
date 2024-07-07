@@ -3,12 +3,20 @@ package FamilyTree;
 import java.io.Serializable;
 import java.util.*;
 import Human.Human;
+//import Human.HumanIterator;
+import Human.HumanComparatorbyAmountOfChildren;
 
-public class FamilyTree implements Serializable {
-    private final List<Human> ListOfFamily;
+import static java.util.Collections.*;
+
+public class FamilyTree implements Serializable, Iterable<Human> {
+    private List<Human> ListOfFamily;
 
     public FamilyTree(){
         ListOfFamily = new ArrayList<>();
+    }
+
+    public FamilyTree(List<Human> listOfFamily) {
+        this.ListOfFamily = listOfFamily;
     }
 
     public void addHumantoTree(Human human) {
@@ -41,6 +49,20 @@ public class FamilyTree implements Serializable {
         return null;
     }
 
+    public List<Human> getListOfFamily() {
+        return ListOfFamily;
+    }
+
+    public void sortByName(){
+        Collections.sort(ListOfFamily);
+        //sort(ListOfFamily);
+        //ListOfFamily.sort(null);
+    }
+
+    public void sortByAmountOfChildren(){
+        ListOfFamily.sort(new HumanComparatorbyAmountOfChildren());
+    }
+
     @Override
     public String toString() {
         return getInfo();
@@ -56,4 +78,12 @@ public class FamilyTree implements Serializable {
         return sb.toString();
     }
 
+    //    @Override
+//    public Iterator<Human> iterator() {
+//        return new HumanIterator(this) ;
+//    }
+    @Override
+    public Iterator<Human> iterator() {
+        return ListOfFamily.iterator() ;
+    }
 }
