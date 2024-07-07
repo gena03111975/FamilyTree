@@ -1,11 +1,14 @@
 package Human;
 
+import FamilyTree.FamilyMember;
+import FamilyTree.FamilyTree;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.*;
 
 
-public class Human implements Serializable, Comparable<Human> {
+public class Human implements Serializable, Comparable<Human>, FamilyMember<Human> {
     private int id;
     private String name;
     private LocalDate dob, dod;
@@ -27,10 +30,10 @@ public class Human implements Serializable, Comparable<Human> {
         parentsList = new ArrayList<>();
 
         if (father != null) {
-            father.addChildrentoHuman(this);
+            father.addChildrentoFamilyMember(this);
         }
         if (mother != null) {
-            mother.addChildrentoHuman(this);
+            mother.addChildrentoFamilyMember(this);
         }
     }
 
@@ -43,28 +46,42 @@ public class Human implements Serializable, Comparable<Human> {
     }
 
     //методы добавления и получения списка детей у человека
-    public void addChildrentoHuman(Human child){
+    @Override
+    public void addChildrentoFamilyMember(Human child){
         if(!childrenList.contains(child)){
             childrenList.add(child);
             if(!parentsList.contains(this)) {
-                child.addParentstoHuman(this);
+                child.addParentstoFamilyMember(this);
             }
         }
     }
-    public List<Human> getHumansChildrenList()
-    {
-        return this.childrenList;
-    }
-    //методы добавления и получения списка родителей у человека
-    public void addParentstoHuman(Human parent) {
+    @Override
+    public void addParentstoFamilyMember(Human parent) {
         if(!this.parentsList.contains(parent)){
             this.parentsList.add(parent);
         }
     }
 
-    public List<Human> getParentsofHuman(){
+    @Override
+    public List<Human> getChildrensList()
+    {
+        return this.childrenList;
+    }
+
+
+    @Override
+    public List<Human> getParentsofFamilyMember(){
         return this.parentsList;
     }
+
+
+
+    //методы добавления и получения списка родителей у человека
+
+
+
+
+
 
 
     //методы добавления и получения супруга(и) у человека
@@ -76,8 +93,10 @@ public class Human implements Serializable, Comparable<Human> {
         return this.spouse;
     }
 
+
+
     //метод добавления и получения id у человека
-    public int getId(){
+    public Integer getId(){
         return id;
     }
 

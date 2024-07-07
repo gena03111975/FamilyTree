@@ -1,4 +1,4 @@
-package HumanBuilder;
+package Human;
 
 import FamilyTree.FamilyMember;
 
