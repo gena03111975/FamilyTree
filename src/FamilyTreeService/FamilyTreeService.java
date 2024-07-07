@@ -1,10 +1,10 @@
-package FamilyTreeService;
+package FamilyTree.FamilyTreeService;
 
 import FamilyTree.FamilyTree;
 import Human.Gender;
 import Human.Human;
-import HumanBuilder.HumanBuilder;
-
+import Human.HumanBuilder.HumanBuilder;
+import FamilyTree.FamilyMember;
 import java.time.LocalDate;
 
 public class FamilyTreeService {
@@ -30,7 +30,7 @@ public class FamilyTreeService {
     public String getFamilyTreeInfo(){
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Семейное дерево:\n");
-        for (Human human: newFamilyTree){
+        for (Object human: newFamilyTree){
             stringBuilder.append(human);
             stringBuilder.append("\n");
         }
